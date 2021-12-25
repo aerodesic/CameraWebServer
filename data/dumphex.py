@@ -12,7 +12,10 @@ else:
     gzipname = pathname + ".gz"
     outputname = pathname + ".txt"
 
-    os.remove(gzipname)
+    try:
+        os.remove(gzipname)
+    except:
+        pass # Ignore non-existant file
 
     # Convert to gzip format
     if os.system("gzip -k %s" % pathname) == 0:
